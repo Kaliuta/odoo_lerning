@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_session_calendar" model="ir.actions.act_window">
+        <field name="name">Session Calendar</field>
+        <field name="res_model">openacademy.session</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="openacademy_session_calendar"/>
+    </record>
+    <record id="action_course_list" model="ir.actions.act_window">
+        <field name="name">Курси</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_session_graph" model="ir.actions.act_window" >
+        <field name="name">Кількість учасників</field>
+        <field name="res_model">openacademy.session</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="openacademy_session_graph"/>
+    </record>
+
+    <record id="dashboard_form_view" model="ir.ui.view">
+        <field name="name">Dashboard Form</field>
+        <field name="model">board.board</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard">
+                <board style="1-1">
+                    <column>
+                        <action name="%(action_session_calendar)d" string="Календар"/>
+                    </column>
+                    <column>
+                        <action name="%(action_course_list)d" string="Курси"/>
+                        <action name="%(action_session_graph)d" string="Кількість учасників"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record id="openacademy_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="dashboard_form_view"/>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem
+            id="menu_dashboard"
+            name="Dashboard"
+            parent="openacademy.menu_root"
+            action="openacademy_dashboard"
+            sequence="1"/>
+</odoo>

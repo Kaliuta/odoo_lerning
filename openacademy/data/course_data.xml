@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record model="openacademy.course" id="course_base">
+            <field name="title">Odoo base</field>
+            <field name="description">Базовий курс Odoo</field>
+        </record>
+        <record model="openacademy.course" id="course_odoo_extended">
+            <field name="title">Odoo extended</field>
+            <field name="description">Розширений курс Odoo</field>
+        </record>
+        <record model="openacademy.course" id="course_odoo_crm">
+            <field name="title">CRM</field>
+            <field name="description">CRM курсу Odoo</field>
+        </record>
+
+    </data>
+
+</odoo>

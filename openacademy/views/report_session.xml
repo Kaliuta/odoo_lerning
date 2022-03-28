@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="session_report">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="session">
+                    <div class="col-auto col-3 mw-100 mb-2" name="session_name">
+                        <strong>Session:</strong>
+                        <p class="m-0" t-field="session.name"/>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2" name="session_start">
+                        <strong>Start:</strong>
+                        <p class="m-0" t-field="session.start_date"/>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2" name="session_finish">
+                        <strong>Finish:</strong>
+                        <p class="m-0" t-field="session.finish_date"/>
+                    </div>
+                    <!--
+                    <span t-field="session.name"/>
+                    <span t-field="session.start_date"/>
+                    <span t-field="session.finish_date"/>
+                    -->
+                    <table class="table table-sm o_main_table" name="session_report_attendees">
+                        <thead>
+                            <tr>
+                                <th name="th_name" class="text-left"><span>Name</span></th>
+                                <th name="th_phone" class="text-left"><span>Phone</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="invoice_tbody">
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="lines" t-value="session.attendees_ids"/>
+
+                            <t t-foreach="lines" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td name="openacademy_session_line_name"><span t-field="line.name" t-options="{'widget': 'text'}"/></td>
+                                    <td name="openacademy_session_line_phone"><span t-field="line.phone" t-options="{'widget': 'text'}"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+            </div>
+        </t>
+    </template>
+
+</odoo>
