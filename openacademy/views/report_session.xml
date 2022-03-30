@@ -17,11 +17,7 @@
                         <strong>Finish:</strong>
                         <p class="m-0" t-field="session.finish_date"/>
                     </div>
-                    <!--
-                    <span t-field="session.name"/>
-                    <span t-field="session.start_date"/>
-                    <span t-field="session.finish_date"/>
-                    -->
+
                     <table class="table table-sm o_main_table" name="session_report_attendees">
                         <thead>
                             <tr>

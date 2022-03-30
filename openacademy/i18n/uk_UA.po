@@ -35,7 +35,7 @@ msgstr ""
 #. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session__is_active
 msgid "Active"
-msgstr "Активна"
+msgstr "Активний"
 
 #. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_fill_session_wizard__attendees_ids
@@ -46,7 +46,7 @@ msgstr "Учасники"
 #. module: openacademy
 #: model_terms:ir.ui.view,arch_db:openacademy.openacademy_session_fill_view_form
 msgid "Cancel"
-msgstr "Відмінити"
+msgstr "Скасувати"
 
 #. module: openacademy
 #: model:ir.model,name:openacademy.model_res_partner
@@ -67,7 +67,7 @@ msgstr "Опис курсу"
 #. module: openacademy
 #: model:ir.model.constraint,message:openacademy.constraint_openacademy_course_title_uniq
 msgid "Course title already exists !"
-msgstr "Назва курсу існує"
+msgstr "Назва курсу вже існує!"
 
 #. module: openacademy
 #: model:ir.actions.act_window,name:openacademy.action_openacademy_list_courses
