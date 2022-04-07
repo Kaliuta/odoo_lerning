@@ -1,13 +1,16 @@
 {
     'name': "openacademy",
-    'summary': "Open Academy - навчальний модуль з курсу odoo-lerning.",
-    'version': '15.0.1.0.1',
-    'description': """Open Academy - навчальний модуль з курсу odoo-lerning.""",
+    'summary': "Open Academy - module odoo-lerning.",
+    'version': '1.0.0',
+    'description': """Open Academy - module odoo-lerning.""",
     'author': "Vasyl Kaliuta",
     'website': "https://borove.top",
-    'category': 'Uncategorized',
+    'category': 'Academy',
+    'sequence': -50,
     'depends': ['base', 'board'],
     'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
 
     # always loaded
     'data': [
