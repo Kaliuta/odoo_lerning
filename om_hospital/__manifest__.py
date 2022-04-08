@@ -9,7 +9,10 @@
     'summary': 'Hospital management system',
     'description': """Hospital management system module""",
     'depends': [],
-    'data': [],
+    'data': [
+        'views/menu.xml',
+        'views/patient_view.xml',
+    ],
     'demo': [],
     'application': True,
     'auto_install': False,
