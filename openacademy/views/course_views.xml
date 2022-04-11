@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
+
     <record model="ir.ui.view" id="openacademy_course_list">
       <field name="name">Openacademy list</field>
       <field name="model">openacademy.course</field>
@@ -133,7 +133,6 @@
       </field>
     </record>
 
-    <!-- Inherit Form View to Modify it -->
     <record id="openacademy_partner_form" model="ir.ui.view">
         <field name="name">Partner</field>
         <field name="model">res.partner</field>
@@ -168,18 +167,19 @@
        </field>
     </record>
 
-    <!-- actions opening views on models -->
     <record id="action_openacademy_list_courses" model="ir.actions.act_window" >
         <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{"search_default_my_courses":1}</field>
     </record>
+
     <record id="openacademy_list_sessions" model="ir.actions.act_window">
         <field name="name">Sessions</field>
         <field name="res_model">openacademy.session</field>
         <field name="view_mode">tree,calendar,graph,gantt,kanban,form</field>
     </record>
+
     <record id="action_openacademy_session_fill" model="ir.actions.act_window">
         <field name="name">Session Fill Wizard</field>
         <field name="res_model">fill.session.wizard</field>
@@ -187,21 +187,34 @@
         <field name="target">new</field>
         <field name="binding_model_id" ref="model_openacademy_session"/>
     </record>
+
     <record id="openacademy_list_partners" model="ir.actions.act_window">
         <field name="name">Partners</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Top menu item -->
-    <menuitem name="Open Academy" id="openacademy.menu_root"/>
-    <!-- menu categories -->
-      <!-- This Menu Item must have a parent and an action -->
-      <menuitem id="openacademy_courses_action" name="Courses" parent="openacademy.menu_root"
-                action="action_openacademy_list_courses" sequence="20"/>
-      <menuitem id="openacademy_session_action" name="Sessions" parent="openacademy.menu_root"
-                action="openacademy_list_sessions" sequence="30"/>
-      <menuitem id="openacademy_partner_action" name="Partners" parent="openacademy.menu_root"
-                action="openacademy_list_partners" sequence="40"/>
+    <menuitem name="Open Academy"
+              web_icon="openacademy,static/description/icon.png"
+              id="openacademy.menu_root"
+              sequence="10"/>
+
+      <menuitem id="openacademy_courses_action"
+                name="Courses"
+                parent="openacademy.menu_root"
+                action="action_openacademy_list_courses"
+                sequence="20"/>
+
+      <menuitem id="openacademy_session_action"
+                name="Sessions"
+                parent="openacademy.menu_root"
+                action="openacademy_list_sessions"
+                sequence="30"/>
+
+      <menuitem id="openacademy_partner_action"
+                name="Partners"
+                parent="openacademy.menu_root"
+                action="openacademy_list_partners"
+                sequence="40"/>
   </data>
 </odoo>

@@ -12,7 +12,6 @@
     'auto_install': False,
     'license': 'LGPL-3',
 
-    # always loaded
     'data': [
         'security/openacademy_security.xml',
         'security/ir.model.access.csv',
@@ -23,7 +22,7 @@
         'wizard/create_session_view.xml',
         'data/course_data.xml',
     ],
-    # only loaded in demonstration mode
+
     'demo': [
         'demo/demo.xml',
     ],
