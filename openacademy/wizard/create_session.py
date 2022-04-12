@@ -4,8 +4,8 @@ from odoo import models, fields, api
 class CreateSession(models.TransientModel):
     _name = 'fill.session.wizard'
     _description = 'Session fill wizard'
-    session_ids = fields.Many2many(comodel_name="openacademy.session", string="Session", )
-    attendees_ids = fields.Many2many(comodel_name="res.partner", string="Attendees")
+    session_ids = fields.Many2many('openacademy.session', string="Session", )
+    attendees_ids = fields.Many2many('res.partner', string="Attendees")
 
     @api.model
     def default_get(self, _fields):

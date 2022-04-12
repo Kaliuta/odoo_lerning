@@ -5,10 +5,10 @@ class Course(models.Model):
     _name = 'openacademy.course'
     _description = 'Courses of the OpenAcademy'
 
-    title = fields.Char(string="Title", required=True, )
-    description = fields.Text(string="Description")
-    responsible_id = fields.Many2one(comodel_name="res.users", string="Responsible", required=False, )
-    session_ids = fields.One2many(comodel_name="openacademy.session", string="Session", required=False,
+    title = fields.Char(string='Title', required=True, )
+    description = fields.Text(string='Description')
+    responsible_id = fields.Many2one('res.users', string='Responsible', required=False, )
+    session_ids = fields.One2many('openacademy.session', string="Session", required=False,
 
                                 inverse_name="course_id")
     _sql_constraints = [

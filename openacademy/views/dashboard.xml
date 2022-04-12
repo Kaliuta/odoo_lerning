@@ -7,11 +7,13 @@
         <field name="view_mode">calendar</field>
         <field name="view_id" ref="openacademy_session_calendar"/>
     </record>
+
     <record id="action_course_list" model="ir.actions.act_window">
         <field name="name">Курси</field>
         <field name="res_model">openacademy.course</field>
         <field name="view_mode">tree,form</field>
     </record>
+
     <record id="action_session_graph" model="ir.actions.act_window" >
         <field name="name">Кількість учасників</field>
         <field name="res_model">openacademy.session</field>
@@ -46,7 +48,6 @@
         <field name="view_id" ref="dashboard_form_view"/>
     </record>
 
-    <!-- This Menu Item must have a parent and an action -->
     <menuitem
             id="menu_dashboard"
             name="Dashboard"
