@@ -166,7 +166,7 @@
                     <field name="description"/>
                     <separator/>
                     <filter name="my_courses" string="My courses" domain="[('responsible_id', '=', uid)]"/>
-                    <group expand="1" string="Group By">
+                    <group expand="0" string="Group By">
                         <filter name="responsible_id" string="Responsible" context="{'group_by': 'responsible_id'}"/>
                     </group>
                 </search>

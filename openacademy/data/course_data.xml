@@ -3,17 +3,22 @@
 
     <data>
 
-        <record model="openacademy.course" id="course_base">
+        <record model="openacademy.course" id="course_python">
+            <field name="title">Python course</field>
+            <field name="description">Курс розробки Python</field>
+            <field name="responsible_id">2</field>
+        </record>
+
+        <record model="openacademy.course" id="course_odoo_base">
             <field name="title">Odoo base</field>
             <field name="description">Базовий курс Odoo</field>
+            <field name="responsible_id">2</field>
         </record>
-        <record model="openacademy.course" id="course_odoo_extended">
-            <field name="title">Odoo extended</field>
-            <field name="description">Розширений курс Odoo</field>
-        </record>
-        <record model="openacademy.course" id="course_odoo_crm">
-            <field name="title">CRM</field>
-            <field name="description">CRM курсу Odoo</field>
+
+        <record model="openacademy.course" id="course_odoo_hospital">
+            <field name="title">Hospital course</field>
+            <field name="description">Hospital course lerning</field>
+            <field name="responsible_id">2</field>
         </record>
 
     </data>

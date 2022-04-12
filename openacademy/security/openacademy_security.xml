@@ -6,21 +6,22 @@
             <field name="name">OpenAcademy</field>
             <field name="sequence" eval="1"/>
         </record>
+
         <record id="openacademy_manager" model="res.groups">
             <field name="name">Manager</field>
             <field name="category_id" ref="openacademy_module_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+
         <record id="openacademy_rule_responsible_write_restrict" model="ir.rule">
             <field name="name">Write restrict for responsible</field>
             <field ref="model_openacademy_course" name="model_id"/>
             <field name="domain_force">[('responsible_id', '=', user.id)]</field>
             <field name="perm_write" eval="0"/>
             <field name="perm_unlink" eval="0"/>
-            <!-- You can attach this rule to a specific group, Or make it Global -->
             <field name="groups" eval="[(4, ref('openacademy.openacademy_manager'))]"/>
-            <!--<field name="global" eval="1"/> -->
         </record>
+
         <record id="openacademy_rule_no_responsible" model="ir.rule">
             <field name="name">Allow modify without responsible</field>
             <field ref="model_openacademy_course" name="model_id"/>
@@ -29,9 +30,8 @@
             <field name="perm_create" eval="1"/>
             <field name="perm_read" eval="1"/>
             <field name="perm_unlink" eval="1"/>
-            <!-- You can attach this rule to a specific group, Or make it Global -->
             <field name="groups" eval="[(4, ref('openacademy.openacademy_manager'))]"/>
-            <!--<field name="global" eval="1"/> -->
         </record>
+
     </data>
 </odoo>
