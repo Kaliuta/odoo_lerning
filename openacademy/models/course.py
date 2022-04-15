@@ -9,9 +9,8 @@ class Course(models.Model):
     description = fields.Text(string='Description')
     active = fields.Boolean(string='Active', default=True)
     responsible_id = fields.Many2one('res.users', string='Responsible', required=False, )
-    session_ids = fields.One2many('openacademy.session', string="Session", required=False,
+    session_ids = fields.One2many('openacademy.session', string="Session", required=False, inverse_name="course_id")
 
-                                inverse_name="course_id")
     _sql_constraints = [
         ('title_uniq', 'unique (title)', "Course title already exists !"),
         ('title_notequal_descr', 'check (title <> description)', "Title and description should be different !"),

@@ -12,17 +12,15 @@ class Session(models.Model):
     lasting_days = fields.Integer(compute="_compute_lasting_days")
 
     is_active = fields.Boolean(string="Active", default=True)
-    duration = fields.Integer(string="Duration", required=False, )
+    duration = fields.Integer(string="Duration", required=False)
     finish_date = fields.Date(string="Finish date", compute="_compute_finish_date", store="True")
-    number_seats = fields.Integer(string="Number of seats", required=False, )
+    number_seats = fields.Integer(string="Number of seats", required=False)
     instructor_id = fields.Many2one('res.partner', string='Instructor', required=False,
                                     domain="['|', "
                                            "('instructor', '=', 'True'), "
                                            "('category_id.name', '=like', 'Teacher /%')]")
-    course_id = fields.Many2one('openacademy.course', inverse_name="session_ids",
-                                string="Course", required=True, )
-    attendees_ids = fields.Many2many('res.partner', relation="session_ids",
-                                     string="Attendees", )
+    course_id = fields.Many2one('openacademy.course', inverse_name="session_ids", string="Course", required=True)
+    attendees_ids = fields.Many2many('res.partner', relation="session_ids", string="Attendees")
     taken_seats = fields.Integer(string="Taken seats", compute="_compute_taken_seats", store="True")
     percentage_taken_seats = fields.Integer(string="% taken seats", compute="_compute_taken_seats_percentage")
 
