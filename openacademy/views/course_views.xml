@@ -130,15 +130,19 @@
                 <form string="">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="is_active"/>
-                            <field name="start_date"/>
-                            <field name="duration"/>
-                            <field name="number_seats"/>
-                            <field name="instructor_id"/>
-                            <field name="course_id"/>
-                            <field name="attendees_ids"/>
-                            <field name="percentage_taken_seats" widget="progresbar"/>
+                            <group>
+                                <field name="name"/>
+                                <field name="is_active"/>
+                                <field name="duration"/>
+                                <field name="number_seats"/>
+                                <field name="instructor_id"/>
+                                <field name="course_id"/>
+                                <field name="attendees_ids"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="percentage_taken_seats" widget="progresbar"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
