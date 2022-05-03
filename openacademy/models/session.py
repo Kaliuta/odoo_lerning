@@ -77,7 +77,7 @@ class Session(models.Model):
                         'message': "The number of seats smaller then number of attendees"
                     }
                 }
-    ##Обмеження моделі
+
     @api.constrains('instructor_id')
     def _check_instructor(self):
         for rec in self:
