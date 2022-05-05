@@ -11,6 +11,7 @@ class Course(models.Model):
     active = fields.Boolean(string='Active', default=True)
     responsible_id = fields.Many2one('res.users', string='Responsible', required=False, )
     session_ids = fields.One2many('openacademy.session', string="Session", required=False, inverse_name="course_id")
+    priority = fields.Selection([('0', 'Very Low'), ('1', 'Low'), ('2', 'Normal'), ('3', 'High')], string='Priority')
 
     _sql_constraints = [
         ('title_uniq', 'unique (title)', "Course title already exists !"),
