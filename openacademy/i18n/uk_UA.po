@@ -225,7 +225,7 @@ msgstr "Сесія"
 #. module: openacademy
 #: model:ir.actions.act_window,name:openacademy.action_openacademy_session_fill
 msgid "Session Fill Wizard"
-msgstr "Помічний заповнення сесії"
+msgstr "Помічник заповнення сесії"
 
 #. module: openacademy
 #: model_terms:ir.ui.view,arch_db:openacademy.openacademy_session_gantt
