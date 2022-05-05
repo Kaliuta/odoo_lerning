@@ -4,6 +4,7 @@ class Course(models.Model):
     _name = 'openacademy.course'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Courses of the OpenAcademy'
+    _rec_name = 'title'
 
     title = fields.Char(string='Title', required=True, )
     description = fields.Text(string='Description')
