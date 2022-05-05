@@ -103,13 +103,13 @@
                             </h1>
                         </div>
                         <notebook>
-                            <page string="Description">
+                            <page string="Description" name="description">
                                 <field name="description" placeholder="Course description..."/>
                                 <label for="responsible_id"/>
                                 <field name="responsible_id"/>
                                 <field name="active" invisible="1"/>
                             </page>
-                            <page string="Sessions">
+                            <page string="Sessions" name="sessions">
                                 <field name="session_ids"/>
                             </page>
                         </notebook>
