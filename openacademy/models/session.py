@@ -23,6 +23,11 @@ class Session(models.Model):
     attendees_ids = fields.Many2many('res.partner', relation="session_ids", string="Attendees")
     taken_seats = fields.Integer(string="Taken seats", compute="_compute_taken_seats", store="True")
     percentage_taken_seats = fields.Integer(string="% taken seats", compute="_compute_taken_seats_percentage")
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('in_consultation', 'In Consultation'),
+        ('done', 'Done'),
+        ('cancel', 'Cancelled')], default='draft', string='Status', required=True)
 
     @api.depends('number_seats', 'attendees_ids')
     def _compute_taken_seats_percentage(self):
