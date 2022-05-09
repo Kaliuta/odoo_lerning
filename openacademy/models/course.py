@@ -7,7 +7,7 @@ class Course(models.Model):
     _rec_name = 'title'
 
     title = fields.Char(string='Title', required=True, )
-    description = fields.Html(string='Description')
+    description = fields.Html(string='Description', help="You can use html")
     active = fields.Boolean(string='Active', default=True)
     responsible_id = fields.Many2one('res.users', string='Responsible', required=False, )
     session_ids = fields.One2many('openacademy.session', string="Session", required=False, inverse_name="course_id")
