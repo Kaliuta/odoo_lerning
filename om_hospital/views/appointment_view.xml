@@ -5,10 +5,16 @@
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree create="0" delete="0">
+            <tree delete="0">
                 <field name="patient_id"/>
                 <field name="appointment_time"/>
                 <field name="booking_date"/>
+                <field name="state"
+                       decoration-success="state == 'done'"
+                       decoration-info="state == 'draft'"
+                       decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'in_consultation'"
+                       widget="badge" />
             </tree>
         </field>
     </record>
@@ -17,7 +23,7 @@
         <field name="name">hospital.appointment.form</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <form create="0" delete="0" edit="0">
+            <form delete="0" edit="0">
                 <header>
                     <field name="state" widget="statusbar" options="{'clickable': '1'}"
                     statusbar_visible="draft,in_consultation,done" />
