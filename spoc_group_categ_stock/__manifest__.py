@@ -2,7 +2,6 @@
     'name': "Group Category Stock",
     'version': '1.0.0',
     'category': 'Inventory',
-    'application': False,
     'installable': True,
     'auto_install': False,
     'application': True,
