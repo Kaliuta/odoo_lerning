@@ -9,7 +9,9 @@
                   decoration-warning="state == 'in_consultation'">
                 <field name="patient_id"/>
                 <field name="appointment_time"/>
-                <field name="booking_date"/>
+                <field name="booking_date" optional="show" />
+                <field name="ref" optional="hide"/>
+                <field name="gender" optional="hide"/>
                 <field name="activity_ids" widget="list_activity" />
                 <field name="state"
                        decoration-success="state == 'done'"

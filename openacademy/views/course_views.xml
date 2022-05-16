@@ -8,6 +8,7 @@
                 <tree>
                     <field name="title"/>
                     <field name="description"/>
+                    <field name="activity_ids" widget="list_activity"/>
                     <field name="responsible_id"/>
                 </tree>
             </field>
@@ -21,12 +22,18 @@
                       decoration-danger="lasting_days &gt; 15">
                     <field name="name"/>
                     <field name="start_date"/>
-                    <field name="duration"/>
-                    <field name="number_seats"/>
+                    <field name="duration" optional="show"/>
+                    <field name="number_seats" optional="show"/>
                     <field name="instructor_id"/>
                     <field name="course_id"/>
-                    <field name="percentage_taken_seats" widget="progressbar"/>
+                    <field name="percentage_taken_seats" widget="progressbar" optional="show"/>
                     <field name="lasting_days" invisible="True"/>
+                    <field name="state"
+                       decoration-success="state == 'done'"
+                       decoration-info="state == 'draft'"
+                       decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'in_consultation'"
+                       widget="badge" optional="hide"/>
                 </tree>
             </field>
         </record>
