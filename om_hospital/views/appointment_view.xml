@@ -6,10 +6,11 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <tree delete="0" decoration-success="state == 'done'" decoration-danger="state == 'cancel'"
-                  decoration-info="state == 'draft'" decoration-warning="state == 'in_consultation'">
+                  decoration-warning="state == 'in_consultation'">
                 <field name="patient_id"/>
                 <field name="appointment_time"/>
                 <field name="booking_date"/>
+                <field name="activity_ids" widget="list_activity" />
                 <field name="state"
                        decoration-success="state == 'done'"
                        decoration-info="state == 'draft'"
