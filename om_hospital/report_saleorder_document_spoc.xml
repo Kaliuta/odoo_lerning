@@ -3,7 +3,7 @@
     <t t-call="web.external_layout">
         <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
         <t t-set="forced_vat"
-           t-value="doc.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
+           t-value="doc.fiscal_position_id.foreign_vat"/>
 
         <t t-if="doc.partner_id.street2">
             <br/>
@@ -122,6 +122,7 @@
                 <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                 <thead style="display: table-row-group">
                     <tr style="border-bottom: 2px solid black">
+                        <th style="border-right: 2px solid black" name="th_number" class="text-right">№</th>
                         <th style="border-right: 2px solid black" name="th_description" class="text-left">Description
                         </th>
                         <th style="border-right: 2px solid black" name="th_quantity" class="text-right">Quantity</th>
@@ -139,17 +140,21 @@
                 <tbody class="sale_tbody">
 
                     <t t-set="current_subtotal" t-value="0"/>
+                    <t t-set="current_row_number" t-value="0"/>
 
                     <t t-foreach="doc.order_line" t-as="line">
-
+                        <t t-set="current_row_number" t-value="current_row_number + 1"/>
                         <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
                            groups="account.group_show_line_subtotals_tax_excluded"/>
                         <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
                            groups="account.group_show_line_subtotals_tax_included"/>
 
-                        <tr style="border-bottom: 2px solid grey"
+                        <tr t-if="line.price_total != 0" style="border-bottom: 2px solid grey"
                             t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                             <t t-if="not line.display_type">
+                                <td style="border-right: 2px solid grey" name="td_number" align="center">
+                                    <span t-raw="current_row_number"/>
+                                </td>
                                 <td style="border-right: 2px solid grey" name="td_name">
                                     <span t-field="line.name"/>
                                 </td>
@@ -228,6 +233,7 @@
             <p t-if="not is_html_empty(doc.payment_term_id.note)">
                 <span t-field="doc.payment_term_id.note"/>
             </p>
+
             <p id="fiscal_position_remark"
                t-if="doc.fiscal_position_id and not is_html_empty(doc.fiscal_position_id.sudo().note)">
                 <strong>Fiscal Position Remark:</strong>
