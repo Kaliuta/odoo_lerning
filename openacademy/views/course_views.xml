@@ -5,7 +5,7 @@
             <field name="name">openacademy.course.tree</field>
             <field name="model">openacademy.course</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree sample="1">
                     <field name="title"/>
                     <field name="description"/>
                     <field name="activity_ids" widget="list_activity"/>
