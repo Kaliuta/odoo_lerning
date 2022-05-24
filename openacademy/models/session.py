@@ -27,7 +27,7 @@ class Session(models.Model):
         ('draft', 'Draft'),
         ('in_consultation', 'In Consultation'),
         ('done', 'Done'),
-        ('cancel', 'Cancelled')], default='draft', string='Status', required=True)
+        ('cancel', 'Cancelled')], default='draft', string='Status', required=True, tracking=True)
 
     @api.depends('number_seats', 'attendees_ids')
     def _compute_taken_seats_percentage(self):
@@ -97,3 +97,6 @@ class Session(models.Model):
     def action_fill_attendees(self, attendees_ids):
         self.attendees_ids = attendees_ids
 
+    def action_cancel(self):
+        for rec in self:
+            rec.state = "cancel"

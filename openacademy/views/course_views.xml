@@ -141,6 +141,7 @@
             <field name="arch" type="xml">
                 <form string="">
                     <header>
+                        <button name="action_cancel" string="Cancelled" type="object"/>
                         <field name="state" widget="statusbar" options="{'clickable': '1'}"
                                statusbar_visible="draft,in_consultation,done"/>
                     </header>
