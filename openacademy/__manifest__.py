@@ -15,12 +15,12 @@
     'data': [
         'security/openacademy_security.xml',
         'security/ir.model.access.csv',
+        'data/course_data.xml',
+        'wizard/create_session_view.xml',
         'views/course_views.xml',
         'views/session_report.xml',
         'views/report_session.xml',
         'views/dashboard.xml',
-        'wizard/create_session_view.xml',
-        'data/course_data.xml',
     ],
 
     'demo': [
