@@ -54,6 +54,9 @@
                             states="draft"/>
                     <button name="action_done" string="Done" data-hotkey="v" type="object" class="oe_highlight"
                             states="in_consultation"/>
+<!--                    <button name="%(om_hospital.action_cancel_appointment)d" string="Cancelled" data-hotkey="z" type="action"-->
+<!--                            states="draft,in_consultation"/>-->
+
                     <button name="action_cancel" string="Cancelled" data-hotkey="z" type="object"
                             states="draft,in_consultation"/>
                     <button name="action_draft" string="Reset to Draft" type="object" states="cancel"/>
