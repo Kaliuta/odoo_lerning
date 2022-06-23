@@ -7,7 +7,7 @@
     'website': "https://borove.top",
     'category': 'Academy',
     'sequence': -50,
-    'depends': ['base', 'board', 'mail'],
+    'depends': ['board', 'mail'],
     'application': True,
     'auto_install': False,
     'license': 'LGPL-3',
