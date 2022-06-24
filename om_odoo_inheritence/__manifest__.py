@@ -11,6 +11,7 @@
     """,
 
     'author': "My Company",
+    'license': 'LGPL-3',
     'website': "http://www.yourcompany.com",
 
     'category': 'Uncategorized',
