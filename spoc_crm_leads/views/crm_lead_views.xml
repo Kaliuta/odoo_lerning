@@ -1,0 +1,32 @@
+<odoo>
+
+    <record model="ir.ui.view" id="crm_lead_view_form_inherit">
+        <field name="name">crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='lead']" position="after">
+                <page name="next_leads" string="Next Leads">
+                    <group>
+                        <group>
+                            <field name="list_of_partners">
+                                <tree decoration-danger="opportunity_count == 0" decoration-warning="old_leads == True" >
+                                    <field name="opportunity_count" invisible="1"/>
+                                    <field name="old_leads" invisible="1"/>
+                                    <field name="display_name"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <button name="open_crm_form" string="Add Leads" type="object" class="oe_highlight"
+                                            icon="fa-plus">
+                                    </button>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
