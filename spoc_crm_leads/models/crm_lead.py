@@ -10,15 +10,15 @@ class Lead(models.Model):
 
     def _compute_list_of_partners(self):
         has_a_lead = self.env["crm.lead"].search([]).mapped("partner_id.id")
-        system_users = self.env["res.users"].search([("groups_id", "=", self.env.ref("base.group_user").id)]
+        system_users = self.env["res.users"].search([("groups_id", "in", self.env.ref("base.group_user").id)]
                                                     ).mapped("partner_id.id")
 
         compute_old_leads = self.env["crm.lead"].search(
             [("create_date", "<", fields.Date.today() - timedelta(days=28))]).mapped("partner_id.id")
 
-        related_recordset = self.env["res.partner"].search(["&", ("id", "!=", system_users), "|",
-                                                            ("id", "!=", has_a_lead),
-                                                            ("id", "=", compute_old_leads), ])
+        related_recordset = self.env["res.partner"].search(["&", ("id", "not in", system_users), "|",
+                                                            ("id", "not in", has_a_lead),
+                                                            ("id", "in", compute_old_leads), ])
         for record in self:
             record.list_of_partners = related_recordset
 
