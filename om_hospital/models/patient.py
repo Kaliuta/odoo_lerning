@@ -16,6 +16,7 @@ class HospitalPatient(models.Model):
     appointment_id = fields.Many2one('hospital.appointment', string="Appointment")
     image = fields.Image(string='Image')
     tag_ids = fields.Many2many('patient.tag', string='Tag')
+    appointment_count = fields.Integer(string='Appointment count')
 
     @api.model
     def create(self, vals):
