@@ -8,12 +8,12 @@ class OdooPlayGround(models.Model):
     DEFAULT_ENV_VARIABLES = """# Available variables
     # - self: Current Object
     # - self.env: Odoo Environment on which the action is triggered
-    # - self.env.user: Return the current 
-    # - self.env.is_system: Return
-    # - self.env.is_admin: Return
-    # - self.env.is_superuser: Return
-    # - self.env.company: Return the current 
-    # - self.env.companies: Return
+    # - self.env.user: Return the current user (as an instance)
+    # - self.env.is_system: Return whether the current user has group "Settings", or is in superuser mode.
+    # - self.env.is_admin: Return whether the current user has group "Access Rights", or is in superuser mode.
+    # - self.env.is_superuser: Return whether the environment is in superuser mode.
+    # - self.env.company: Return the current company (as an instance)
+    # - self.env.companies: Return a recordset of the enabled companies by the user
     # - self.env.lang: Return the current language code \n\n\n\n"""
 
     model_id = fields.Many2one('ir.model', string='Model')
