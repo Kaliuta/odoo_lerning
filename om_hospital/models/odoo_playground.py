@@ -14,7 +14,9 @@ class OdooPlayGround(models.Model):
     # - self.env.is_superuser: Return whether the environment is in superuser mode.
     # - self.env.company: Return the current company (as an instance)
     # - self.env.companies: Return a recordset of the enabled companies by the user
-    # - self.env.lang: Return the current language code \n\n\n\n"""
+    # - self.env.lang: Return the current language code
+    # - self.env.cr: Cursor
+    # - self.env.context: Context \n\n\n\n"""
 
     model_id = fields.Many2one('ir.model', string='Model')
     code = fields.Text(string='Code', default=DEFAULT_ENV_VARIABLES)
