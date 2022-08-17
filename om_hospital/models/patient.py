@@ -1,5 +1,6 @@
 from datetime import date
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
@@ -17,6 +18,12 @@ class HospitalPatient(models.Model):
     image = fields.Image(string='Image')
     tag_ids = fields.Many2many('patient.tag', string='Tag')
     appointment_count = fields.Integer(string='Appointment count')
+
+    @api.constrains('date_of_birth')
+    def _check_date_of_birth(self):
+        for rec in self:
+            if rec.date_of_birth and rec.date_of_birth > fields.Date.today():
+                raise ValidationError(_("The entered date of birth is not acceptable !"))
 
     @api.model
     def create(self, vals):
