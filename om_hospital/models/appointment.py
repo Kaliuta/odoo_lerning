@@ -1,11 +1,14 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
+
 
 class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Hospital Appointment"
-    _rec_name = "patient_id"
+    _rec_name = "name"
 
+    name = fields.Char(string='Sequence', default='New')
     patient_id = fields.Many2one('hospital.patient', string="Patient")
     gender = fields.Selection(related='patient_id.gender')
     appointment_time = fields.Datetime(string='Appointment Time', default=fields.Datetime.now)
@@ -26,6 +29,16 @@ class HospitalAppointment(models.Model):
     doctor_id = fields.Many2one('res.users', string='Doctor')
     pharmacy_line_ids = fields.One2many('appointment.pharmasy.lines', 'appointment_id', string='Pharmacy Lines')
     hide_sales_price = fields.Boolean(string="Hide Sales Price")
+    
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super(HospitalAppointment, self).create(vals)
+
+    def unlink(self):
+        if self.state != 'draft':
+            raise ValidationError(_("You can delete appointment only in draft status !"))
+        return super(HospitalAppointment, self).unlink()
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
