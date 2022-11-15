@@ -8,7 +8,7 @@ class HospitalPatient(models.Model):
     _description = "Hospital Patient"
     _rec_name = "name"
 
-    name = fields.Char(string='Name', tracking=True)
+    name = fields.Char(string='Name', tracking=True, translate=True)
     date_of_birth = fields.Date(string='Date of Birth')
     ref = fields.Char(string='Reference')
     age = fields.Integer(string='Age', compute='_compute_age', tracking=True)

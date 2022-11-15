@@ -9,12 +9,12 @@ class HospitalAppointment(models.Model):
     _rec_name = "name"
 
     name = fields.Char(string='Sequence', default='New')
-    patient_id = fields.Many2one('hospital.patient', string="Patient")
+    patient_id = fields.Many2one('hospital.patient', string='Patient', ondelete='cascade')
     gender = fields.Selection(related='patient_id.gender')
     appointment_time = fields.Datetime(string='Appointment Time', default=fields.Datetime.now)
     booking_date = fields.Date(string='Booking Date', default=fields.Date.context_today)
     ref = fields.Char(string='Reference', help="Reference of the patient from patient record")
-    prescription = fields.Html(string='Prescription')
+    prescription = fields.Html(string='Prescription', translate=True)
     priority = fields.Selection([
         ('0', 'Very Low'),
         ('1', 'Low'),
