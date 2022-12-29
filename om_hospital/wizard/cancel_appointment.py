@@ -2,6 +2,7 @@ import datetime
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
+
 class CancelAppointmentWizard(models.TransientModel):
     _name = 'cancel.appointment.wizard'
     _description = 'Cancel Appointment Wizard'
