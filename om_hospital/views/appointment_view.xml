@@ -26,6 +26,9 @@
         <field name="arch" type="xml">
             <tree delete="0" decoration-success="state == 'done'" decoration-danger="state == 'cancel'"
                   decoration-warning="state == 'in_consultation'" sample="1" multi_edit="1">
+                <header>
+                    <button name="action_in_consultation" string="In Consultation" type="object" />
+                </header>
                 <field name="patient_id"/>
                 <field name="appointment_time"/>
                 <field name="booking_date" optional="show"/>
