@@ -63,3 +63,7 @@ class HospitalPatient(models.Model):
 
     def name_get(self):
         return [(record.id, '[%s] %s' % (record.ref, record.name)) for record in self]
+
+    def action_test(self):
+        print("Clicked")
+        return
