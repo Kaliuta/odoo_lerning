@@ -13,7 +13,8 @@ class HospitalPatient(models.Model):
     name = fields.Char(string='Name', tracking=True, translate=True)
     date_of_birth = fields.Date(string='Date of Birth')
     ref = fields.Char(string='Reference')
-    age = fields.Integer(string='Age', compute='_compute_age', inverse="_inverse_compute_age", tracking=True)
+    age = fields.Integer(string='Age', compute='_compute_age', inverse="_inverse_compute_age", search="_search_age",
+                         tracking=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string="Gender", tracking=True,
                               default='female')
     active = fields.Boolean(string='Active', default=True)
@@ -69,8 +70,11 @@ class HospitalPatient(models.Model):
             today = date.today()
             if rec.age:
                 rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age)
-        #     else:
-        #         rec.age = 0
+
+    def _search_age(self, operator, value):
+        date_of_birth = date.today() - relativedelta.relativedelta(years=value)
+        start_of_date = date_of_birth - relativedelta.relativedelta(years=1)
+        return [('date_of_birth', '>', start_of_date), ('date_of_birth', '<=', date_of_birth)]
 
     def name_get(self):
         return [(record.id, '[%s] %s' % (record.ref, record.name)) for record in self]
