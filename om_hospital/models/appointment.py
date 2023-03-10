@@ -36,8 +36,9 @@ class HospitalAppointment(models.Model):
         return super(HospitalAppointment, self).create(vals)
 
     def unlink(self):
-        if self.state != 'draft':
-            raise ValidationError(_("You can delete appointment only in draft status !"))
+        for rec in self:
+            if rec.state != 'draft':
+                raise ValidationError(_("You can delete appointment only in draft status !"))
         return super(HospitalAppointment, self).unlink()
 
     @api.onchange('patient_id')
@@ -70,6 +71,7 @@ class HospitalAppointment(models.Model):
     def action_draft(self):
         for rec in self:
             rec.state = 'draft'
+
 
 class AppointmentPharmasyLines(models.Model):
     _name = "appointment.pharmasy.lines"

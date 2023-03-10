@@ -1,6 +1,8 @@
 from datetime import date
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+from dateutil import relativedelta
+
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
@@ -11,8 +13,9 @@ class HospitalPatient(models.Model):
     name = fields.Char(string='Name', tracking=True, translate=True)
     date_of_birth = fields.Date(string='Date of Birth')
     ref = fields.Char(string='Reference')
-    age = fields.Integer(string='Age', compute='_compute_age', tracking=True)
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female') ], string="Gender", tracking=True, default='female')
+    age = fields.Integer(string='Age', compute='_compute_age', inverse="_inverse_compute_age", tracking=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string="Gender", tracking=True,
+                              default='female')
     active = fields.Boolean(string='Active', default=True)
     appointment_id = fields.Many2one('hospital.appointment', string="Appointment")
     image = fields.Image(string='Image')
@@ -41,7 +44,6 @@ class HospitalPatient(models.Model):
             if rec.appointment_ids:
                 raise ValidationError(_("You cannot delete a patient with appointments !"))
 
-
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
@@ -60,6 +62,15 @@ class HospitalPatient(models.Model):
                 rec.age = today.year - rec.date_of_birth.year - ((today.month, today.day) < (rec.date_of_birth.month, rec.date_of_birth.day))
             else:
                 rec.age = 0
+
+    @api.depends('age')
+    def _inverse_compute_age(self):
+        for rec in self:
+            today = date.today()
+            if rec.age:
+                rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age)
+        #     else:
+        #         rec.age = 0
 
     def name_get(self):
         return [(record.id, '[%s] %s' % (record.ref, record.name)) for record in self]
