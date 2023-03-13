@@ -88,7 +88,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_id"/>
+                            <field name="patient_id" widget="selection"/>
                             <field name="ref" readonly="1" force_save="1"/>
                             <field name="doctor_id" widget="many2one_avatar"/>
                             <field name="booking_date" help="Date of Booking" default_focus="1"/>
