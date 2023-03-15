@@ -29,6 +29,7 @@
                 <header>
                     <button name="action_in_consultation" string="In Consultation" type="object" />
                 </header>
+                <field name="name"/>
                 <field name="patient_id"/>
                 <field name="appointment_time"/>
                 <field name="booking_date" optional="show"/>
