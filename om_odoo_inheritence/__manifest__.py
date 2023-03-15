@@ -17,7 +17,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['sale',],
+    'depends': ['sale', 'project', 'stock'],
 
     'data': [
         'views/sale_order_view.xml',
