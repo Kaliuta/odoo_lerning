@@ -22,13 +22,25 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+
+                    <div class="alert alert-info text-center o_form_header" role="alert"
+                    attrs="{'invisible': [('is_birthday', '=', False)]}">
+                        <a class="close" data-dismiss="alert" href="#">x</a>
+                        <div>
+                            <strong>Today is Birthday !</strong>
+                        </div>
+                        <div>Wish
+                            <field name="name" readonly="1"/>
+                        </div>
+                    </div>
+
                     <field name="image" widget="image" class="oe_avatar"/>
                     <div class="oe_title">
                         <h4>
                             <field name="ref" readonly="1"/>
                         </h4>
                         <h2>
-                            <label for="name" string="Name" class="oe_edit_only" />
+                            <label for="name" string="Name" class="oe_edit_only"/>
                             <field name="name"/>
                         </h2>
                     </div>
@@ -37,7 +49,8 @@
                             <field name="date_of_birth"/>
                             <field name="age"/>
                             <field name="appointment_count"/>
-<!--                            <field name="appointment_id"/>-->
+                            <field name="is_birthday" invisible="1"/>
+                            <!--                            <field name="appointment_id"/>-->
                         </group>
                         <group>
                             <field name="gender" invisible="context.get('hide_gender')" widget="radio"/>
@@ -76,8 +89,8 @@
                 <field name="gender"/>
                 <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>
                 <filter name="filter_female" string="FeMale" domain="[('gender', '=', 'female')]"/>
-<!--                <separator/>-->
-<!--                <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]"/>-->
+                <!--                <separator/>-->
+                <!--                <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]"/>-->
                 <separator/>
                 <filter name="filter_archived" string="Archived" domain="[('active', '=', False)]"/>
                 <group expand="0" string="Group By">
