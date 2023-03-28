@@ -20,8 +20,12 @@ class OdooPlayGround(models.Model):
     # - self.env.context: Context \n\n\n\n"""
 
     model_id = fields.Many2one('ir.model', string='Model')
-    code = fields.Text(string='Code', default=DEFAULT_ENV_VARIABLES)
+    code = fields.Text(string='Code')
     result = fields.Text(string='Result')
+
+    def action_clear(self):
+        self.code = ''
+        self.result = ''
 
     def action_execute(self):
         try:
