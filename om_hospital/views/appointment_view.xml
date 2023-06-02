@@ -128,7 +128,7 @@
                             <field name="hide_sales_price" groups="base.group_no_one"/>
                             <field name="appointment_time"/>
                             <field name="gender"/>
-                            <button name="action_test" string="Object Button" type="object" class="oe_highlight"
+                            <button name="get_mysql_data" string="Object Button" type="object" class="oe_highlight"
                                     confirm="Are you sure to execute python code"
                                     groups="base.group_no_one"/>
                             <button name="%(om_hospital.action_hospital_patient)d" string="Action Button" type="action"

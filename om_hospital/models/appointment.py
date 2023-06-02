@@ -1,6 +1,9 @@
 import random
+import mysql.connector
+
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+
 
 
 class HospitalAppointment(models.Model):
@@ -90,6 +93,61 @@ class HospitalAppointment(models.Model):
                 progress = 0
             rec.progress = progress
 
+    def get_mysql_data(self):
+        # Конфігурація з'єднання з базою даних MySQL
+        config = {
+            'user': 'kaliuta_borove',
+            'password': 'majwbmw',
+            'host': 's64.nska.net',
+            'database': 'kaliuta_borove',
+        }
+
+        # Встановлення з'єднання з базою даних
+        try:
+            connection = mysql.connector.connect(**config)
+            if connection.is_connected():
+                print('Connected to MySQL database')
+
+                # Створення курсора
+                cursor = connection.cursor()
+
+                # Виконання запиту до бази даних
+                query = "SELECT * FROM product WHERE id = 1;"
+                cursor.execute(query)
+
+                # Отримання результатів запиту
+                result = cursor.fetchone()
+
+                print(result)
+                # Перевірка наявності результатів
+                # if result:
+                #     price_data = result[0]
+
+                #     # Розпарсювання JSON-даних
+                #     parsed_data = json.loads(price_data)
+                #
+                #     # Додайте решту коду для роботи з розпарсованими даними
+                #     print(parsed_data)
+                # else:
+                #     print('No data found in the table')
+
+                # Закриття курсора і з'єднання
+                cursor.close()
+
+        except mysql.connector.Error as e:
+            print(f'Error connecting to MySQL database: {e}')
+        finally:
+            if connection.is_connected():
+                connection.close()
+                print('MySQL database connection closed')
+
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'message': 'Click SuccessFull',
+                'type': 'rainbow_man',
+            }
+        }
 
 class AppointmentPharmasyLines(models.Model):
     _name = "appointment.pharmasy.lines"
